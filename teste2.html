@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marise's Machine</title>
+    <style>
+        /* Fundo da página com a imagem abstrata de números */
+        body {
+            background-image: url('background.jpg');
+            background-size: cover;
+            background-position: center;
+            color: #fff;
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            backdrop-filter: blur(5px);
+        }
+
+        /* Estilo da caixa principal */
+        .container {
+            background-color: rgba(0, 0, 0, 0.8); /* Fundo semitransparente */
+            padding: 40px;
+            border-radius: 10px;
+            text-align: center;
+            width: 90%;
+            max-width: 500px;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.4);
+        }
+
+        h1 {
+            color: #b10fa9;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        h3 {
+            color: #9c0f85;
+            margin-bottom: 15px;
+        }
+
+        /* Campo de entrada de texto */
+        input[type="text"] {
+            width: 80%;
+            padding: 15px;
+            border: none;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+            color: #333;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Caixa de seleção para a conversão */
+        select {
+            width: 80%;
+            padding: 12px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            border: none;
+            font-size: 1.1rem;
+            background-color: #9e16c0;
+            color: #000;
+            box-shadow: 0 4px 8px rgba(220, 20, 238, 0.651);
+        }
+
+        /* Botão de conversão */
+        button {
+            background-color: #b10fa9;
+            color: #000;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 25px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            margin-top: 20px;
+            box-shadow: 0 8px 15px rgba(218, 32, 224, 0.3);
+        }
+
+        button:hover {
+            background-color: #b10fa9;
+            box-shadow: 0 10px 20px rgba(234, 30, 241, 0.5);
+        }
+
+        /* Estilo das divisões de resultado */
+        .result {
+            display: none;
+            background-color: rgba(255, 255, 255, 0.2); /* Fundo translúcido */
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 15px;
+            color: #fff;
+            font-size: 1.1rem;
+            word-wrap: break-word;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .result-title {
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #a817ad;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Marise's Machine</h1>
+        
+        <h3>Decimal</h3>
+        <input id="demo1" type="text" placeholder="Digite o valor em decimal">
+        
+        <h3>Converter para:</h3>
+        <select id="conversionChoice">
+            <option value="octal">Octal</option>
+            <option value="hexadecimal">Hexadecimal</option>
+            <option value="binario">Binário</option>
+        </select>
+
+        <div class="result" id="demo2">
+            <span class="result-title" id="result-title">Resultado:</span>
+            <span id="result-value"></span>
+        </div>
+
+        <button onclick="converter()">Converter</button>
+    </div>
+
+    <script>
+        function converter() {
+            var decimal = Number(document.getElementById("demo1").value);
+            let octal = decimal.toString(8);
+            let hexadecimal = decimal.toString(16);
+            let binaria = decimal.toString(2);
+
+            var choice = document.getElementById("conversionChoice").value;
+
+            if (choice == "octal") {
+                document.getElementById("result-title").innerHTML = "Resultado Octal:";
+                document.getElementById("result-value").innerHTML = octal;
+            } else if (choice == "hexadecimal") {
+                document.getElementById("result-title").innerHTML = "Resultado Hexadecimal:";
+                document.getElementById("result-value").innerHTML = hexadecimal;
+            } else if (choice == "binario") {
+                document.getElementById("result-title").innerHTML = "Resultado Binário:";
+                document.getElementById("result-value").innerHTML = binaria;
+            }
+
+            document.getElementById('demo2').style.display = 'block';
+        }
+    </script>
+</body>
+</html>
